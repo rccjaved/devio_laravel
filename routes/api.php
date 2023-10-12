@@ -10,6 +10,8 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\FeedBackController;
 use App\Http\Controllers\Admin\FooterController;
+use App\Http\Controllers\Admin\BlogController;
+use App\Http\Controllers\Admin\ContactController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +51,11 @@ Route::get('/feedback-images', [FeedBackController::class, 'SelectFeedBack']);
 
 // Feedback Page Route
 Route::get('/footer/data', [FooterController::class, 'onAllSelect']);
+Route::post('/postcontact', [ContactController::class, 'PostContactDetails']);
+
+
+// Blog Page Route
+Route::get('/blog/data', [BlogController::class, 'SelectBlog']);
+Route::get('/blog-details/{blogId}', [BlogController::class, 'BlogDetails']);
+
+

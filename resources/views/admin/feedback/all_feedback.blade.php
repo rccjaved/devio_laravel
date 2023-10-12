@@ -1,4 +1,13 @@
 @extends('admin.admin_master')
+
+@section('title','Feedback Content')
+@section('description','DevioTech Feedback Content Section')
+@section('keywords','DevioTech, Feedback')
+
+@section('css')
+@endsection
+
+
 @section('admin')
 
 <div class="content-body">
@@ -20,7 +29,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <tbody>
                                 @foreach ($feedback as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
@@ -48,7 +57,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tfoot>
+                            </tbody>
 
                         </table>
                     </div>

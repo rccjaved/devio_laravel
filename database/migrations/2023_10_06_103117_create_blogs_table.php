@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('blog_image')->nullable();
             $table->string('blog_author')->nullable();
             $table->text('blog_description')->nullable();
+            $table->string('slug')->nullable();
             $table->text('facebook_url')->nullable();
             $table->text('twitter_url')->nullable();
             $table->text('linkedin_url')->nullable();

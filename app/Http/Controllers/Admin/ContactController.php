@@ -4,31 +4,26 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 
 class ContactController extends Controller
 {
-    public function onContactSend(Request $request){
+    public function PostContactDetails(Request $request){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $message = $request->input('message');
         
-        $ContactArray = json_decode($request->getContent(), true);
-
-        $name = $ContactArray['name'];
-        $email = $ContactArray['email'];
-        $message = $ContactArray['message'];
-
 
         $result = Contact::insert([
+
             'name' => $name,
             'email' => $email,
             'message' => $message,
+    
         ]);
 
-        if($result == true){
-            return 1;
-        }else{
-            return 0;
-        }
-        
-    }//end method
+        return $result;
+    }//end of method
 
     public function AllContactMessage(){
         $contact = Contact::all();
@@ -47,4 +42,20 @@ class ContactController extends Controller
         return redirect()->back()->with($notification);
 
     } // end mehtod 
+
+    public function ContactForm(){
+        $contact_form = Contact::latest()->get();
+        return view('admin.contact.contact_form', compact('contact_form'));
+    }//end of method
+
+    public function DeleteContactForm($id){
+        Contact::findOrFail($id)->delete();
+
+        $notification = array(
+            'message' => 'Contact Data Deleted Successfully',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    }//end of function
 }

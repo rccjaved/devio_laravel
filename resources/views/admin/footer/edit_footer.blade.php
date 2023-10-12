@@ -1,7 +1,13 @@
 @extends('admin.admin_master')
-@section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@section('title','Edit Contact Content')
+@section('description','DevioTech Contact Content Section')
+@section('keywords','DevioTech, Contact')
+
+@section('css')
+@endsection
+
+@section('admin')
 
  <!-- Basic multiple Column Form section start -->
  <section id="multiple-column-form">
@@ -103,16 +109,23 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#account-upload').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });   
-</script>
+@endsection
+
+@section('js')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#account-upload').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });   
+    </script>
+
 
 @endsection

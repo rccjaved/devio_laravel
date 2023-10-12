@@ -1,4 +1,14 @@
 @extends('admin.admin_master')
+
+@section('title','Edit About Content')
+@section('description','DevioTech About Content Section')
+@section('keywords','DevioTech, About')
+
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+@endsection
+
 @section('admin')
 
  <!-- Basic multiple Column Form section start -->
@@ -63,14 +73,14 @@
                             <div class="col-md-4 col-6">
                                 <div class="mb-1">
                                     <label class="form-label" for="company-column">Description</label>
-                                    <textarea name="description" id="company-column" class="form-control" cols="30" rows="10">{{ $editaboutcontent->description }}</textarea>
+                                    <textarea name="description" id="company-column" class="form-control tinymce-editor" cols="30" rows="10">{{ $editaboutcontent->description }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-4 col-6">
                                 <div class="mb-1">
                                     <label class="form-label" for="company-column">Sub Description</label>
-                                    <textarea name="bold_description" id="company-column" class="form-control" cols="30" rows="10">{{ $editaboutcontent->bold_description }}</textarea>
+                                    <textarea name="bold_description" id="company-column" class="form-control tinymce-editor" cols="30" rows="10">{{ $editaboutcontent->bold_description }}</textarea>
                                 </div>
                             </div>
 
@@ -87,4 +97,27 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
+@endsection
+
+@section('js')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/oplnldrp940ph7o2kk9ihstewjsqifujn7umusn9ruszucdh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  
+    <script type="text/javascript">
+            tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount', 'image'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+    </script>
 @endsection

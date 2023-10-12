@@ -13,6 +13,27 @@ class FooterController extends Controller
         return $result;
     }
 
+    public function PostContactDetails(Request $request){
+        $name = $request->input('name');
+        $email = $request->input('email');
+        $message = $request->input('message');
+        
+        date_default_timezone_set("Asia/Karachi");
+        $contact_time = date('h:i:sa');
+        $contact_date = date('d-m-Y');
+
+        $result = Contact::insert([
+
+            'name' => $name,
+            'email' => $email,
+            'message' => $message,
+            'contact_date' => $contact_date,
+            'contact_time' => $contact_time,
+        ]);
+
+        return $result;
+    }//end of method
+
     public function AllContact(){
         $footer = Footer::all();
     	return view('admin.footer.all_footer',compact('footer'));

@@ -1,4 +1,12 @@
 @extends('admin.admin_master')
+
+@section('title','Achievements Content')
+@section('description','DevioTech Achievements Content Section')
+@section('keywords','DevioTech, Achievements')
+
+@section('css')
+@endsection
+
 @section('admin')
 
 <div class="content-body">
@@ -21,7 +29,7 @@
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            <tfoot>
+                            <tbody>
                                 @foreach ($achievements as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
@@ -50,7 +58,7 @@
                                     </td>
                                 </tr>
                                 @endforeach
-                            </tfoot>
+                            </tbody>
 
                         </table>
                     </div>
@@ -62,4 +70,7 @@
 
 </div>
 
+@endsection
+
+@section('js')
 @endsection

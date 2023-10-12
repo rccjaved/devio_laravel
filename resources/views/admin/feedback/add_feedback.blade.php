@@ -1,7 +1,13 @@
 @extends('admin.admin_master')
-@section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@section('title','Add Feedback Content')
+@section('description','DevioTech Feedback Content Section')
+@section('keywords','DevioTech, Feedback')
+
+@section('css')
+@endsection
+
+@section('admin')
 
  <!-- Basic multiple Column Form section start -->
  <section id="multiple-column-form">
@@ -48,6 +54,13 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
+
+@endsection
+
+
+@section('js')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){

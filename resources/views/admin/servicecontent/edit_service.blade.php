@@ -1,7 +1,13 @@
 @extends('admin.admin_master')
-@section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@section('title','Edit Service Content')
+@section('description','DevioTech Service Content Section')
+@section('keywords','DevioTech, Service')
+
+@section('css')
+@endsection
+
+@section('admin')
 
  <!-- Basic multiple Column Form section start -->
  <section id="multiple-column-form">
@@ -50,20 +56,20 @@
                             <div class="col-md-3 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="country-floating">Para1</label>
-                                    <textarea name="" id="country-floating" cols="30" class="form-control" rows="5" name="service_page_para_one">{{ $editData->service_page_para_one }}</textarea>
+                                    <textarea name="" id="country-floating" cols="30" class="form-control tinymce-editor" rows="5" name="service_page_para_one">{{ $editData->service_page_para_one }}</textarea>
                                 </div>
                             </div>
                             <div class="col-md-3 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="country-floating">Para Two</label>
-                                    <textarea name="" id="country-floating" cols="30" class="form-control" rows="5" name="service_page_para_two">{{ $editData->service_page_para_two }}</textarea>
+                                    <textarea name="" id="country-floating" cols="30" class="form-control tinymce-editor" rows="5" name="service_page_para_two">{{ $editData->service_page_para_two }}</textarea>
                                 </div>
                             </div>
 
                             <div class="col-md-3 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="country-floating">Description</label>
-                                    <textarea name="" id="country-floating" cols="30" class="form-control" rows="5" value="{{ $editData->description }}" name="description"></textarea>
+                                    <textarea name="" id="country-floating" cols="30" class="form-control tinymce-editor" rows="5" value="{{ $editData->description }}" name="description"></textarea>
                                 </div>
                             </div>
 
@@ -71,7 +77,7 @@
                                 <div class="mb-1">
                                     <div class="d-flex">
                                         <a class="me-25">
-                                            <img id="showImage" src="{{ (!empty($editData->service_page_image_one))?url('uploads/service/'.$editData->service_page_image_one):url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px;">
+                                            <img id="showImage" src="{{ $editData->service_page_image_one }}" style="width: 100px; height: 100px;">
                                         </a>
                                         <!-- upload and reset button -->
                                         <div class="d-flex align-items-end mt-75 ms-1">
@@ -90,7 +96,7 @@
                                 <div class="mb-1">
                                     <div class="d-flex">
                                         <a class="me-25">
-                                            <img id="showImage1" src="{{ (!empty($editData->service_page_image_two))?url('uploads/service/'.$editData->service_page_image_two):url('uploads/no_image.jpg') }}" style="width: 100px; height: 100px;">
+                                            <img id="showImage1" src="{{$editData->service_page_image_two}}" style="width: 100px; height: 100px;">
                                         </a>
                                         <!-- upload and reset button -->
                                         <div class="d-flex align-items-end mt-75 ms-1">
@@ -118,6 +124,11 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
+@endsection
+
+@section('js')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function(){
@@ -141,6 +152,26 @@
             reader.readAsDataURL(e.target.files['0']);
         });
     });   
+</script>
+
+<script src="https://cdn.tiny.cloud/1/oplnldrp940ph7o2kk9ihstewjsqifujn7umusn9ruszucdh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script type="text/javascript">
+        tinymce.init({
+        selector: 'textarea.tinymce-editor',
+        height: 300,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount', 'image'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+            'bold italic backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_css: '//www.tiny.cloud/css/codepen.min.css'
+    });
 </script>
 
 @endsection

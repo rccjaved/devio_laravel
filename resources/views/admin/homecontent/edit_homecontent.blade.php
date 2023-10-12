@@ -1,4 +1,13 @@
 @extends('admin.admin_master')
+
+@section('title','Edit Home Content')
+@section('description','DevioTech Home Content Section')
+@section('keywords','DevioTech')
+
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+@endsection
+
 @section('admin')
 
  <!-- Basic multiple Column Form section start -->
@@ -22,7 +31,8 @@
                             <div class="col-md-6 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="last-name-column">Home SubTitle</label>
-                                    <input type="text" id="last-name-column" class="form-control" value="{{ $edithomecontent->home_subtitle }}" name="home_subtitle" />
+                                    <textarea class="tinymce-editor" name="home_subtitle">{{ $edithomecontent->home_subtitle }}</textarea>
+
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
@@ -108,4 +118,28 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
+@endsection
+
+@section('js')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.tiny.cloud/1/oplnldrp940ph7o2kk9ihstewjsqifujn7umusn9ruszucdh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  
+    <script type="text/javascript">
+            tinymce.init({
+            selector: 'textarea.tinymce-editor',
+            height: 300,
+            menubar: false,
+            plugins: [
+                'advlist autolink lists link image charmap print preview anchor',
+                'searchreplace visualblocks code fullscreen',
+                'insertdatetime media table paste code help wordcount', 'image'
+            ],
+            toolbar: 'undo redo | formatselect | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_css: '//www.tiny.cloud/css/codepen.min.css'
+        });
+    </script>
 @endsection

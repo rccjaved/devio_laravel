@@ -1,7 +1,15 @@
 @extends('admin.admin_master')
-@section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+@section('title','Service Content')
+@section('description','DevioTech Service Content Section')
+@section('keywords','DevioTech, Service')
+
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+@endsection
+
+@section('admin')
 
  <!-- Basic multiple Column Form section start -->
  <section id="multiple-column-form">
@@ -50,13 +58,13 @@
                             <div class="col-md-4 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="country-floating">Para1</label>
-                                    <textarea name="" id="country-floating" cols="30" class="form-control" rows="5" name="service_page_para_one"></textarea>
+                                    <textarea name="" id="country-floating" cols="30" class="form-control tinymce-editor" rows="5" name="service_page_para_one"></textarea>
                                 </div>
                             </div>
                             <div class="col-md-4 col-12">
                                 <div class="mb-1">
                                     <label class="form-label" for="country-floating">Para Two</label>
-                                    <textarea name="" id="country-floating" cols="30" class="form-control" rows="5" name="service_page_para_two"></textarea>
+                                    <textarea name="" id="country-floating" cols="30" class="form-control tinymce-editor" rows="5" name="service_page_para_two"></textarea>
                                 </div>
                             </div>
 
@@ -113,29 +121,56 @@
 </section>
 <!-- Basic Floating Label Form section end -->
 
+@endsection
+
+@section('js')
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#account-upload').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });   
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('#account-upload-1').change(function(e){
+                var reader = new FileReader();
+                reader.onload = function(e){
+                    $('#showImage1').attr('src',e.target.result);
+                }
+                reader.readAsDataURL(e.target.files['0']);
+            });
+        });   
+    </script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/oplnldrp940ph7o2kk9ihstewjsqifujn7umusn9ruszucdh/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 
 <script type="text/javascript">
-    $(document).ready(function(){
-        $('#account-upload').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });   
-</script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#account-upload-1').change(function(e){
-            var reader = new FileReader();
-            reader.onload = function(e){
-                $('#showImage1').attr('src',e.target.result);
-            }
-            reader.readAsDataURL(e.target.files['0']);
-        });
-    });   
+        tinymce.init({
+        selector: 'textarea.tinymce-editor',
+        height: 300,
+        menubar: false,
+        plugins: [
+            'advlist autolink lists link image charmap print preview anchor',
+            'searchreplace visualblocks code fullscreen',
+            'insertdatetime media table paste code help wordcount', 'image'
+        ],
+        toolbar: 'undo redo | formatselect | ' +
+            'bold italic backcolor | alignleft aligncenter ' +
+            'alignright alignjustify | bullist numlist outdent indent | ' +
+            'removeformat | help',
+        content_css: '//www.tiny.cloud/css/codepen.min.css'
+    });
 </script>
 
 @endsection
+

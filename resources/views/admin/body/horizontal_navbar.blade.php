@@ -62,7 +62,9 @@
 
         <li class=" nav-item" data-menu="dropdown"><a class="nav-link d-flex align-items-center" href="" ><i data-feather="edit"></i><span data-i18n="Dashboards">Teams</span></a></li>
 
-        <li class=" nav-item" data-menu="dropdown"><a class="nav-link d-flex align-items-center" href="" ><i data-feather="edit"></i><span data-i18n="Dashboards">Blogs</span></a></li>
+        <li class=" nav-item" data-menu="dropdown"><a class="nav-link d-flex align-items-center" href="{{ route('admin.blog.view') }}" ><i data-feather="edit"></i><span data-i18n="Dashboards">Blogs</span></a></li>
+        <li class=" nav-item" data-menu="dropdown"><a class="nav-link d-flex align-items-center" href="{{ route('admin.contact-form.view') }}" ><i data-feather="edit"></i><span data-i18n="Dashboards">Contact Form</span></a></li>
+
 
 
 

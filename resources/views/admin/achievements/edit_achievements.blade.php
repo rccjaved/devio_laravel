@@ -1,7 +1,15 @@
 @extends('admin.admin_master')
+
+@section('title','Edit Achievements Content')
+@section('description','DevioTech Achievements Content Section')
+@section('keywords','DevioTech, Achievements')
+
+@section('css')
+@endsection
+
+
 @section('admin')
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
  <!-- Basic multiple Column Form section start -->
  <section id="multiple-column-form">
@@ -56,6 +64,15 @@
 <!-- Basic Floating Label Form section end -->
 
 
+
+
+
+@endsection
+
+@section('js')
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script type="text/javascript">
     $(document).ready(function(){
         $('#account-upload').change(function(e){
@@ -67,6 +84,5 @@
         });
     });   
 </script>
-
 
 @endsection

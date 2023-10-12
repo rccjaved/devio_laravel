@@ -1,8 +1,8 @@
 @extends('admin.admin_master')
 
-@section('title','About Content')
-@section('description','DevioTech About Content Section')
-@section('keywords','DevioTech, About')
+@section('title','Blogs Content')
+@section('description','DevioTech Blogs Content Section')
+@section('keywords','DevioTech, Blogs')
 
 @section('css')
 @endsection
@@ -16,32 +16,29 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-header border-bottom">
-                        <h4 class="card-title">About Content</h4>
+                        <h4 class="card-title">All Blogs</h4>
+                        <a href="{{ route('admin.blog.add') }}" class="dt-button create-new btn btn-primary"> Add New</a>
                     </div>
                     <div class="card-datatable">
                         <table class="dt-responsive table">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>About Title</th>
-                                    <th>SubTitle</th>
-                                    <th>Button</th>
-                                    <th>Image Heading</th>
+                                    <th>Blog Name</th>
+                                    <th>Slug</th>
+                                    <th>Author</th>
                                     <th>Description</th>
-                                    <th>SubDescription</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($aboutcontent as $key => $item)
+                                @foreach ($blogs as $key => $item)
                                 <tr>
                                     <td>{{ $key+1 }}</td>
-                                    <td>{{ $item->about_title }}</td>
-                                    <td>{{ $item->about_subtitle }}</td>
-                                    <td>{{ $item->button_text }}</td>
-                                    <td>{{ $item->image_heading }}</td>
-                                    <td>{{ $item->description }}</td>
-                                    <td>{{ $item->bold_description }}</td>
+                                    <td>{{ $item->blog_name }}</td>
+                                    <td>{{ $item->slug }}</td>
+                                    <td>{{ $item->blog_author }}</td>
+                                    <td>{{ $item->blog_description }}</td>
 
                                     <td>
                                         <div class="dropdown">
@@ -49,11 +46,11 @@
                                                 <i data-feather="more-vertical"></i>
                                             </button>
                                             <div class="dropdown-menu dropdown-menu-end">
-                                                <a class="dropdown-item" href="{{ route('edit.about.content', $item->id) }}">
+                                                <a class="dropdown-item" href="{{ route('admin.blog.edit', $item->id) }}">
                                                     <i data-feather="edit-2" class="me-50"></i>
                                                     <span>Edit</span>
                                                 </a>
-                                                <a class="dropdown-item" id="delete" href="{{ route('delete.about.content', $item->id) }}">
+                                                <a class="dropdown-item" id="delete" href="{{ route('admin.blog.delete', $item->id) }}">
                                                     <i data-feather="trash" class="me-50"></i>
                                                     <span>Delete</span>
                                                 </a>
@@ -63,7 +60,6 @@
                                 </tr>
                                 @endforeach
                             </tbody>
-
                         </table>
                     </div>
                 </div>
